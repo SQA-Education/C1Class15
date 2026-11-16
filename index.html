@@ -1196,5 +1196,14 @@ try{
   if(!patch()){ document.addEventListener('DOMContentLoaded',patch); window.addEventListener('load',patch); var n=0,iv=setInterval(function(){ if(patch()||++n>40) clearInterval(iv); },150); }
 })();
 </script>
+<script>/* __sqaTypeResume (2026-11-16): after "Welcome back → Continue" the speaking section is rebuilt and the
+   "type what you said" box loses its listener, so Continue kept saying "We didn't catch what you said".
+   Delegated listener survives the rebuild; also read the box directly when Continue is pressed. */
+(function(){if(window.__sqaTypeResume)return;window.__sqaTypeResume=1;
+function feed(v){window.__typedSpeech=v;try{spokenText=v;}catch(e){}var b=document.getElementById('sBtn');if(b&&v.trim().length>1){b.disabled=false;b.removeAttribute('disabled');}}
+document.addEventListener('input',function(e){var x=e.target;if(x&&x.id==='sqaTypeSpeak')feed(x.value||'');},true);
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#sBtn');if(!b)return;var ts=document.getElementById('sqaTypeSpeak');if(ts&&(ts.value||'').trim().length>1)feed(ts.value);},true);
+})();</script>
+
 </body>
 </html>
